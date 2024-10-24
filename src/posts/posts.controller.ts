@@ -5,7 +5,9 @@ import {
   Body,
   Patch,
   Param,
-  Delete
+  Delete,
+  Req,
+  Query
 } from "@nestjs/common";
 import { PostsService } from "./posts.service";
 import { CreatePostDto } from "./dto/create-post.dto";
@@ -21,8 +23,8 @@ export class PostsController {
   }
 
   @Get()
-  findAll() {
-    return this.postsService.findAll();
+  findAll(@Query() query: string) {
+    return this.postsService.findAll(query);
   }
 
   @Get(":id")
@@ -32,6 +34,7 @@ export class PostsController {
 
   @Patch(":id")
   update(@Param("id") id: string, @Body() updatePostDto: UpdatePostDto) {
+    console.log({ updatePostDto, id });
     return this.postsService.update(id, updatePostDto);
   }
 

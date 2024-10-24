@@ -1,15 +1,21 @@
-import { Injectable, NotFoundException } from "@nestjs/common";
+import { Injectable, NotFoundException, Query, Req } from "@nestjs/common";
 import { InjectModel } from "@nestjs/mongoose";
 import { Model } from "mongoose";
 import { Post } from "./post.schema";
 import { CreatePostDto } from "./dto/create-post.dto";
 import { UpdatePostDto } from "./dto/update-post.dto";
+import { APIFeatures } from "src/utils/apiFeatures";
 
 @Injectable()
 export class PostsService {
   constructor(@InjectModel(Post.name) private postModel: Model<Post>) {}
 
-  async findAll(): Promise<Post[]> {
+  async findAll(query?: string): Promise<Post[]> {
+    // const features = new APIFeatures(this.postModel.find(), query).pagination();
+
+    // const posts = await features.mongooseQuery.exec();
+
+    // return posts;
     return this.postModel.find().exec();
   }
 

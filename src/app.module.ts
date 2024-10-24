@@ -5,10 +5,11 @@ import { PostsModule } from "./posts/posts.module";
 import { MongooseModule } from "@nestjs/mongoose";
 import * as dotenv from "dotenv";
 import { ConfigModule, ConfigService } from "@nestjs/config";
+import { UploadModule } from "./upload/upload.module";
 
 dotenv.config({ path: process.cwd() + "/.env.development" });
 
-const apiModules = [PostsModule];
+const apiModules = [PostsModule, UploadModule];
 @Module({
   imports: [
     ConfigModule.forRoot({
