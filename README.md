@@ -28,6 +28,14 @@
 
 ## Project setup
 
+# Backend setup on local machine
+ 1. clone githup repository
+ 2. create .env file in the root of the project and paste backend url in `MONGODB_CONNECTION=` variable as shown in  `.env.example` file
+ 3. install all dependencies with `pnpm install`
+ 4. run `pnpm start:dev`
+ 5. connect to the backend api via http://localhost:4000/
+
+
 ```bash
 $ pnpm install
 ```
